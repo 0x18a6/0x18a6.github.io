@@ -22,6 +22,7 @@ body {
   padding: 0 10px;
   margin: 60px auto;
   max-width: 700px;
+  font-family: "Ubuntu Mono", monospace;
 }
 
 h2,

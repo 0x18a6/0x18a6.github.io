@@ -21,8 +21,8 @@ body {
   font-size: 18px;
   padding: 0 10px;
   margin: 60px auto;
-  max-width: 700px;
-  font-family: "Ubuntu Mono", monospace;
+  max-width: 580px;
+  font-family: "Noto Serif JP", serif;
 }
 
 h2,
@@ -58,4 +58,15 @@ code,
   font-size: 85%;
   background-color: rgba(0, 0, 0, 0.04);
   border-radius: 3px;
+}
+
+img {
+  max-width: 150px;
+}
+
+.top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }

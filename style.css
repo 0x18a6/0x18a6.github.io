@@ -50,7 +50,7 @@ a:visited {
 
 code,
 .code {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: "Lucida Console", "Courier New", monospace;
   font-size: 1.125rem;
   line-height: 1.6;
   padding: 0;
@@ -71,4 +71,8 @@ img {
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+a {
+  text-decoration: none;
 }

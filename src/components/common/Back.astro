@@ -1,0 +1,28 @@
+---
+interface Props {
+  label: string
+  href: string
+  class?: string
+}
+
+const { label, href, class: className } = Astro.props
+---
+
+<a
+  href={href}
+  class:list={["group inline-flex items-center gap-x-1.5", className]}
+>
+  <svg
+    aria-hidden="true"
+    viewBox="0 0 24 24"
+    class="text-muted-foreground transition-all duration-200 ease-out group-hover:-translate-x-0.5 group-hover:text-foreground"
+    width="16"
+    height="16"
+  >
+    <path
+      fill="currentColor"
+      d="M20 11H7.8l5.6-5.6L12 4 4 12l8 8 1.4-1.4L7.8 13H20v-2Z"
+    />
+  </svg>
+  <span>{label}</span>
+</a>

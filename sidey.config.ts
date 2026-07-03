@@ -11,8 +11,9 @@ export const sideyConfig = {
 
   navigation: [
     { label: "Home", href: "/" },
+    { label: "Audits", href: "/audits" },
     { label: "Writings", href: "/writings" },
-    { label: "About", href: "/about" },
+    { label: "RSS", href: "/rss.xml" },
   ],
 }
 

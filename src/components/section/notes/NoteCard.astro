@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from "astro:content"
+
+interface Props {
+  noteEntry: CollectionEntry<"notes">
+}
+
+const { noteEntry } = Astro.props
+const { title, description, date } = noteEntry.data
+---
+
+<a href={`/notes/${noteEntry.id}`} class="group block no-underline">
+  <article class="space-y-1">
+    <h2 class="text-lg font-semibold text-foreground group-hover:underline">
+      {title}
+    </h2>
+    <p class="text-sm text-muted-foreground">
+      {date.toLocaleDateString("en", { year: "numeric", month: "long", day: "numeric" })}
+    </p>
+    {description && <p class="text-foreground">{description}</p>}
+  </article>
+</a>

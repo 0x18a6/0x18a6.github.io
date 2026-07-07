@@ -13,6 +13,7 @@ export const sideyConfig = {
     { label: "Home", href: "/" },
     { label: "Audits", href: "/audits" },
     { label: "Writings", href: "/writings" },
+    { label: "Notes", href: "/notes" },
     { label: "RSS", href: "/rss.xml" },
   ],
 }

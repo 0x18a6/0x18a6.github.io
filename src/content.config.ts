@@ -11,18 +11,26 @@ const pages = defineCollection({
   }),
 })
 
+const datedEntrySchema = z.object({
+  title: z.string(),
+  description: z.string().optional(),
+  date: z.coerce.date(),
+  tags: z.array(z.string()).default([]),
+  draft: z.boolean().default(false),
+})
+
 const writings = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/writings" }),
-  schema: z.object({
-    title: z.string(),
-    description: z.string().optional(),
-    date: z.coerce.date(),
-    tags: z.array(z.string()).default([]),
-    draft: z.boolean().default(false),
-  }),
+  schema: datedEntrySchema,
+})
+
+const notes = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/notes" }),
+  schema: datedEntrySchema,
 })
 
 export const collections = {
   pages,
   writings,
+  notes,
 }

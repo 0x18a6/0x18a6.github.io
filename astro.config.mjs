@@ -12,6 +12,8 @@ import rehypeExternalLinks from "rehype-external-links"
 import rehypeLightbox from "./src/plugins/rehype-lightbox.mjs"
 import rehypeSlug from "rehype-slug"
 import rehypeAutolinkHeadings from "rehype-autolink-headings"
+import remarkMath from "remark-math"
+import rehypeKatex from "rehype-katex"
 
 // Sidey Config
 import { sideyConfig } from "./sidey.config.ts"
@@ -28,7 +30,9 @@ export default defineConfig({
       theme: "github-light",
     },
     processor: unified({
+      remarkPlugins: [remarkMath],
       rehypePlugins: [
+        rehypeKatex,
         rehypeLightbox,
         rehypeSlug,
         [

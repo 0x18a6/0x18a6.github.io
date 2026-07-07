@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+import Prose from "@components/common/Prose.astro"
+import Back from "@components/common/Back.astro"
+
+const { entry } = Astro.props
+const { title, description, date } = entry.data
+---
+
+<BaseLayout title={title} description={description ?? title}>
+  <Prose>
+    <Back label="Back to Notes" href="/notes" class="mb-8" />
+    <h1>{title}</h1>
+    <p class="text-sm text-muted-foreground">
+      {date.toLocaleDateString("en", { year: "numeric", month: "long", day: "numeric" })}
+    </p>
+    <slot />
+  </Prose>
+</BaseLayout>

@@ -1,0 +1,47 @@
+---
+title: "On the intuition behind ECDSA"
+date: 2026-07-04
+tags: []
+---
+
+I'm reading this blog post [here](https://rareskills.io/post/ecdsa-tutorial), as well as the prerequesites, to rediscover ECDSA from first principles.
+
+Why do we need anything more than $P = p.G$?
+
+We're building a digital signature algorithm. $P = p.G$ already proves knowledge of a secret $p$ that corresponds to $P$.
+
+$p$ is for signing, $P$ is for verifying. $P$ is a commitment to the value of $p$. 
+
+Ok, $p$ is for signing, but signing what? We need to introduce $m$, the message to sign.
+
+Something like:
+$sig = p.m$, where $P = p.G$
+
+How to verify?
+
+This is the beauty of ECC. We raise the scalars into curve points by multiplying with the generator: $G.sig = G.p.m$. With $P = p.G$, we get: $G.sig = P.m$, which is all public information.
+
+Because both $sig$ and $m$ are public, $p$ is leaked 💀. This begs hiding $p$.
+
+We introduce a second secret $q$, where $Q = q.G$. Now we have two secrets. It's not possible to solve for $p$ with just the single $sig$ equation. An attacker will need a second equation.
+
+This prevents direct algebraic recovery from that single equation.       
+
+I'm writing $sig = f(p,m,q)$ because I'm not sure how to apply $q$ there yet.
+
+Back to the beauty of ECC, raise scalars into curve points ✨.
+
+Because we have two secrets on the right side of $sig=f(p,m,q)$, we will have only one $G$ on that side for two secrets, the other secret will not be raised to its public commitment.
+
+But we have $G$ on the left side too, that's why $f$ needs to raise $q^{-1}$, we get: $G.q.sig = G.p.m$.
+
+That's equivalent to $Q.sig = P.m$, all public information that the verifier verifies. The signature is $sig.q^{-1} = p.m$
+
+## Why does ECDSA do more than $sig.q^{-1} = p.m$?
+TBD.
+
+### Other notes
+
+[El Gamal](https://link.springer.com/chapter/10.1007/3-540-39568-7_2
+) introduced a DSA 5 years before [Schnorr](https://link.springer.com/chapter/10.1007/0-387-34805-0_22
+) did.

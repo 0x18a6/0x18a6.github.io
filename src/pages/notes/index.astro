@@ -1,0 +1,19 @@
+---
+import BaseLayout from "@layouts/BaseLayout.astro"
+import Prose from "@components/common/Prose.astro"
+import NoteCard from "@components/section/notes/NoteCard.astro"
+import { getNotes } from "@utils/getContent"
+
+const title = "Notes"
+const description = "Short notes and working thoughts."
+const noteEntries = await getNotes()
+---
+
+<BaseLayout title={title} description={description}>
+  <Prose>
+    <h1>Notes</h1>
+    <div class="not-prose flex flex-col gap-y-8">
+      {noteEntries.map((noteEntry) => <NoteCard noteEntry={noteEntry} />)}
+    </div>
+  </Prose>
+</BaseLayout>

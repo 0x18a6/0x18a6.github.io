@@ -351,7 +351,34 @@
     width: auto;
     height: 1.75rem;
     max-width: 9rem;
+    cursor: default !important;
     filter: grayscale(1);
     opacity: 0.5;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .prose table td:has(.audit-table-logo) {
+    padding-block: 0.625rem;
+    line-height: 1.25;
+  }
+
+  .prose table td p:has(.audit-table-logo) {
+    margin: 0 !important;
+  }
+
+  .prose table td .audit-table-logo {
+    display: block;
+    width: auto;
+    height: 1rem !important;
+    max-width: 7rem;
+    margin-block: 0 !important;
+    cursor: default !important;
+    filter: grayscale(1);
+    opacity: 0.65;
+    box-shadow: none !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

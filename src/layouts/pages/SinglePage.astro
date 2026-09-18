@@ -1,14 +1,25 @@
 ---
 import BaseLayout from "@layouts/BaseLayout.astro"
 import Prose from "@components/common/Prose.astro"
+import BookButton from "@components/common/BookButton.astro"
 
 const { frontmatter } = Astro.props
 const { title, description } = frontmatter.data
+const showBookingButton = ["home", "audits"].includes(frontmatter.id)
 ---
 
 <BaseLayout title={title} description={description}>
   <Prose>
-    <h1>{title}</h1>
+    {
+      showBookingButton ? (
+        <div class="flex items-center justify-between gap-4">
+          <h1 class="m-0!">{title}</h1>
+          <BookButton class="shrink-0" />
+        </div>
+      ) : (
+        <h1>{title}</h1>
+      )
+    }
     <slot />
   </Prose>
 </BaseLayout>
